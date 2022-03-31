@@ -17,11 +17,11 @@ import (
 	"strings"
 	"text/template"
 
-	"github.com/flipped-aurora/gin-vue-admin/server/resource/template/subcontract"
+	"admin/server/resource/template/subcontract"
 
-	"github.com/flipped-aurora/gin-vue-admin/server/global"
-	"github.com/flipped-aurora/gin-vue-admin/server/model/system"
-	"github.com/flipped-aurora/gin-vue-admin/server/utils"
+	"admin/server/global"
+	"admin/server/model/system"
+	"admin/server/utils"
 
 	"gorm.io/gorm"
 )
@@ -86,7 +86,7 @@ func Init(Package string) {
 		packageServiceName: {
 			path: filepath.Join(global.CONFIG.AutoCode.Root,
 				global.CONFIG.AutoCode.Server, "service", "enter.go"),
-			importCodeF:  "github.com/flipped-aurora/gin-vue-admin/server/%s/%s",
+			importCodeF:  "admin/server/%s/%s",
 			packageNameF: "%s",
 			groupName:    "ServiceGroup",
 			structNameF:  "%sServiceGroup",
@@ -94,7 +94,7 @@ func Init(Package string) {
 		packageRouterName: {
 			path: filepath.Join(global.CONFIG.AutoCode.Root,
 				global.CONFIG.AutoCode.Server, "router", "enter.go"),
-			importCodeF:  "github.com/flipped-aurora/gin-vue-admin/server/%s/%s",
+			importCodeF:  "admin/server/%s/%s",
 			packageNameF: "%s",
 			groupName:    "RouterGroup",
 			structNameF:  "%s",
@@ -102,7 +102,7 @@ func Init(Package string) {
 		packageAPIName: {
 			path: filepath.Join(global.CONFIG.AutoCode.Root,
 				global.CONFIG.AutoCode.Server, "api/v1", "enter.go"),
-			importCodeF:  "github.com/flipped-aurora/gin-vue-admin/server/%s/%s",
+			importCodeF:  "admin/server/%s/%s",
 			packageNameF: "%s",
 			groupName:    "ApiGroup",
 			structNameF:  "%sApiGroup",
@@ -293,7 +293,7 @@ func (autoCodeService *AutoCodeService) CreateTemp(autoCode system.AutoCodeStruc
 			global.CONFIG.AutoCode.Server, global.CONFIG.AutoCode.SInitialize, "gorm.go")
 		var routePath = filepath.Join(global.CONFIG.AutoCode.Root,
 			global.CONFIG.AutoCode.Server, global.CONFIG.AutoCode.SInitialize, "router.go")
-		var imporStr = fmt.Sprintf("github.com/flipped-aurora/gin-vue-admin/server/model/%s", autoCode.Package)
+		var imporStr = fmt.Sprintf("admin/server/model/%s", autoCode.Package)
 		_ = ImportReference(routePath, "", "", autoCode.Package, "")
 		_ = ImportReference(gormPath, imporStr, "", "", "")
 

@@ -1,10 +1,10 @@
 package {{.Package}}
 
 import (
-	"github.com/flipped-aurora/gin-vue-admin/server/global"
-	"github.com/flipped-aurora/gin-vue-admin/server/model/{{.Package}}"
-	"github.com/flipped-aurora/gin-vue-admin/server/model/common/request"
-    {{.Package}}Req "github.com/flipped-aurora/gin-vue-admin/server/model/{{.Package}}/request"
+	"admin/server/global"
+	"admin/server/model/{{.Package}}"
+	"admin/server/model/common/request"
+    {{.Package}}Req "admin/server/model/{{.Package}}/request"
 )
 
 type {{.StructName}}Service struct {

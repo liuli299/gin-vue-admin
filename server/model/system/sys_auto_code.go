@@ -2,7 +2,7 @@ package system
 
 import (
 	"errors"
-	"github.com/flipped-aurora/gin-vue-admin/server/global"
+	"admin/server/global"
 )
 
 // AutoCodeStruct 初始版本自动化代码工具

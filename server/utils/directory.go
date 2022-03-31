@@ -4,7 +4,7 @@ import (
 	"errors"
 	"os"
 
-	"github.com/flipped-aurora/gin-vue-admin/server/global"
+	"admin/server/global"
 	"go.uber.org/zap"
 )
 

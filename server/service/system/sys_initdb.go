@@ -5,10 +5,10 @@ import (
 	"fmt"
 
 	adapter "github.com/casbin/gorm-adapter/v3"
-	"github.com/flipped-aurora/gin-vue-admin/server/global"
-	"github.com/flipped-aurora/gin-vue-admin/server/model/example"
-	"github.com/flipped-aurora/gin-vue-admin/server/model/system"
-	"github.com/flipped-aurora/gin-vue-admin/server/model/system/request"
+	"admin/server/global"
+	"admin/server/model/example"
+	"admin/server/model/system"
+	"admin/server/model/system/request"
 )
 
 type InitDBService struct{}

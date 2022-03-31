@@ -3,17 +3,17 @@ package system
 import (
 	"errors"
 	"fmt"
-	systemReq "github.com/flipped-aurora/gin-vue-admin/server/model/system/request"
+	systemReq "admin/server/model/system/request"
 	"path/filepath"
 	"strings"
 	"time"
 
-	"github.com/flipped-aurora/gin-vue-admin/server/model/system/response"
+	"admin/server/model/system/response"
 
-	"github.com/flipped-aurora/gin-vue-admin/server/global"
-	"github.com/flipped-aurora/gin-vue-admin/server/model/common/request"
-	"github.com/flipped-aurora/gin-vue-admin/server/model/system"
-	"github.com/flipped-aurora/gin-vue-admin/server/utils"
+	"admin/server/global"
+	"admin/server/model/common/request"
+	"admin/server/model/system"
+	"admin/server/utils"
 
 	"go.uber.org/zap"
 )
