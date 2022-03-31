@@ -46,15 +46,15 @@ func (v *viewAuthorityMenuMysql) Initialize() error {
 	sql = strings.ReplaceAll(sql, "@table_name", v.TableName())
 	sql = strings.ReplaceAll(sql, "@menus", "sys_base_menus")
 	sql = strings.ReplaceAll(sql, "@authorities_menus", entity.TableName())
-	if err := global.GVA_DB.Exec(sql).Error; err != nil {
+	if err := global.DB.Exec(sql).Error; err != nil {
 		return errors.Wrap(err, v.TableName()+"视图创建失败!")
 	}
 	return nil
 }
 
 func (v *viewAuthorityMenuMysql) CheckDataExist() bool {
-	err1 := global.GVA_DB.Find(&[]system.SysMenu{}).Error
-	err2 := errors.New(fmt.Sprintf("Error 1146: Table '%v.%v' doesn't exist", global.GVA_CONFIG.Mysql.Dbname, v.TableName()))
+	err1 := global.DB.Find(&[]system.SysMenu{}).Error
+	err2 := errors.New(fmt.Sprintf("Error 1146: Table '%v.%v' doesn't exist", global.CONFIG.Mysql.Dbname, v.TableName()))
 	if errors.As(err1, &err2) {
 		return false
 	}

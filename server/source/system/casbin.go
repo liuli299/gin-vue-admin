@@ -208,14 +208,14 @@ func (c *casbin) Initialize() error {
 		{PType: "p", V0: "9528", V1: "/autoCode/createTemp", V2: "POST"},
 		{PType: "p", V0: "9528", V1: "/user/getUserInfo", V2: "GET"},
 	}
-	if err := global.GVA_DB.Create(&entities).Error; err != nil {
+	if err := global.DB.Create(&entities).Error; err != nil {
 		return errors.Wrap(err, c.TableName()+"表数据初始化失败!")
 	}
 	return nil
 }
 
 func (c *casbin) CheckDataExist() bool {
-	if errors.Is(global.GVA_DB.Where(adapter.CasbinRule{PType: "p", V0: "9528", V1: "GET", V2: "/user/getUserInfo"}).First(&adapter.CasbinRule{}).Error, gorm.ErrRecordNotFound) { // 判断是否存在数据
+	if errors.Is(global.DB.Where(adapter.CasbinRule{PType: "p", V0: "9528", V1: "GET", V2: "/user/getUserInfo"}).First(&adapter.CasbinRule{}).Error, gorm.ErrRecordNotFound) { // 判断是否存在数据
 		return false
 	}
 	return true

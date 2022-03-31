@@ -132,14 +132,14 @@ func (a *api) Initialize() error {
 		{ApiGroup: "按钮权限", Method: "POST", Path: "/authorityBtn/getAuthorityBtn", Description: "获取已有按钮权限"},
 		{ApiGroup: "按钮权限", Method: "POST", Path: "/authorityBtn/canRemoveAuthorityBtn", Description: "删除按钮"},
 	}
-	if err := global.GVA_DB.Create(&entities).Error; err != nil {
+	if err := global.DB.Create(&entities).Error; err != nil {
 		return errors.Wrap(err, a.TableName()+"表数据初始化失败!")
 	}
 	return nil
 }
 
 func (a *api) CheckDataExist() bool {
-	if errors.Is(global.GVA_DB.Where("path = ? AND method = ?", "/excel/downloadTemplate", "GET").First(&system.SysApi{}).Error, gorm.ErrRecordNotFound) {
+	if errors.Is(global.DB.Where("path = ? AND method = ?", "/excel/downloadTemplate", "GET").First(&system.SysApi{}).Error, gorm.ErrRecordNotFound) {
 		return false
 	}
 	return true

@@ -31,7 +31,7 @@ func (initDBService *InitDBService) InitDB(conf request.InitDB) error {
 // initTables 初始化表
 // Author [SliverHorn](https://github.com/SliverHorn)
 func (initDBService *InitDBService) initTables() error {
-	return global.GVA_DB.AutoMigrate(
+	return global.DB.AutoMigrate(
 		system.SysApi{},
 		system.SysUser{},
 		system.SysBaseMenu{},

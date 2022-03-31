@@ -19,14 +19,14 @@ import (
 // writePgsqlConfig pgsql 回写配置
 // Author [SliverHorn](https://github.com/SliverHorn)
 func (initDBService *InitDBService) writePgsqlConfig(pgsql config.Pgsql) error {
-	global.GVA_CONFIG.System.DbType = "pgsql"
-	global.GVA_CONFIG.Pgsql = pgsql
-	cs := utils.StructToMap(global.GVA_CONFIG)
+	global.CONFIG.System.DbType = "pgsql"
+	global.CONFIG.Pgsql = pgsql
+	cs := utils.StructToMap(global.CONFIG)
 	for k, v := range cs {
-		global.GVA_VP.Set(k, v)
+		global.VP.Set(k, v)
 	}
-	global.GVA_VP.Set("jwt.signing-key", uuid.NewV4().String())
-	return global.GVA_VP.WriteConfig()
+	global.VP.Set("jwt.signing-key", uuid.NewV4().String())
+	return global.VP.WriteConfig()
 }
 
 func (initDBService *InitDBService) initPgsqlDB(conf request.InitDB) error {
@@ -47,16 +47,16 @@ func (initDBService *InitDBService) initPgsqlDB(conf request.InitDB) error {
 	}), &gorm.Config{DisableForeignKeyConstraintWhenMigrating: true}); err != nil {
 		return nil
 	} else {
-		global.GVA_DB = db
+		global.DB = db
 	}
 
 	if err := initDBService.initTables(); err != nil {
-		global.GVA_DB = nil
+		global.DB = nil
 		return err
 	}
 
 	if err := initDBService.initPgsqlData(); err != nil {
-		global.GVA_DB = nil
+		global.DB = nil
 		return err
 	}
 
@@ -64,7 +64,7 @@ func (initDBService *InitDBService) initPgsqlDB(conf request.InitDB) error {
 		return err
 	}
 
-	global.GVA_CONFIG.AutoCode.Root, _ = filepath.Abs("..")
+	global.CONFIG.AutoCode.Root, _ = filepath.Abs("..")
 	return nil
 }
 

@@ -27,14 +27,14 @@ func (a *dataAuthorities) Initialize() error {
 		{AuthorityId: "9528", ResourcesId: "8881"},
 		{AuthorityId: "9528", ResourcesId: "9528"},
 	}
-	if err := global.GVA_DB.Create(&entities).Error; err != nil {
+	if err := global.DB.Create(&entities).Error; err != nil {
 		return errors.Wrap(err, a.TableName()+"表数据初始化失败!")
 	}
 	return nil
 }
 
 func (a *dataAuthorities) CheckDataExist() bool {
-	if errors.Is(global.GVA_DB.Where("sys_authority_authority_id = ? AND data_authority_id_authority_id = ?", "9528", "9528").First(&AuthoritiesResources{}).Error, gorm.ErrRecordNotFound) { // 判断是否存在数据
+	if errors.Is(global.DB.Where("sys_authority_authority_id = ? AND data_authority_id_authority_id = ?", "9528", "9528").First(&AuthoritiesResources{}).Error, gorm.ErrRecordNotFound) { // 判断是否存在数据
 		return false
 	}
 	return true

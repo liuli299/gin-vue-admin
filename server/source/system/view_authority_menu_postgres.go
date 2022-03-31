@@ -44,15 +44,15 @@ func (a *viewAuthorityMenuPostgres) Initialize() error {
 	sql = strings.ReplaceAll(sql, "@table_name", a.TableName())
 	sql = strings.ReplaceAll(sql, "@menus", "sys_base_menus")
 	sql = strings.ReplaceAll(sql, "@authorities_menus", entity.TableName())
-	if err := global.GVA_DB.Exec(sql).Error; err != nil {
+	if err := global.DB.Exec(sql).Error; err != nil {
 		return errors.Wrap(err, a.TableName()+"视图创建失败!")
 	}
 	return nil
 }
 
 func (a *viewAuthorityMenuPostgres) CheckDataExist() bool {
-	err1 := global.GVA_DB.Find(&[]system.SysMenu{}).Error
-	err2 := errors.New(fmt.Sprintf("Error 1146: Table '%v.%v' doesn't exist", global.GVA_CONFIG.Pgsql.Dbname, a.TableName()))
+	err1 := global.DB.Find(&[]system.SysMenu{}).Error
+	err2 := errors.New(fmt.Sprintf("Error 1146: Table '%v.%v' doesn't exist", global.CONFIG.Pgsql.Dbname, a.TableName()))
 	if errors.As(err1, &err2) {
 		return false
 	}

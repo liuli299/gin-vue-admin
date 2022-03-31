@@ -45,14 +45,14 @@ func (d *dictionaryDetail) Initialize() error {
 		{Label: "longtext", Value: 9, Status: status, Sort: 9, SysDictionaryID: 5},
 		{Label: "tinyint", Status: status, SysDictionaryID: 6},
 	}
-	if err := global.GVA_DB.Create(&entities).Error; err != nil {
+	if err := global.DB.Create(&entities).Error; err != nil {
 		return errors.Wrap(err, d.TableName()+"表数据初始化失败!")
 	}
 	return nil
 }
 
 func (d *dictionaryDetail) CheckDataExist() bool {
-	if errors.Is(global.GVA_DB.Where("id = ?", 23).First(&system.SysDictionaryDetail{}).Error, gorm.ErrRecordNotFound) { // 判断是否存在数据
+	if errors.Is(global.DB.Where("id = ?", 23).First(&system.SysDictionaryDetail{}).Error, gorm.ErrRecordNotFound) { // 判断是否存在数据
 		return false
 	}
 	return true
