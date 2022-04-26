@@ -84,7 +84,7 @@ jwt:
   buffer-time: 86400
   expires-time: 604800
   issuer: qmPlus
-  signing-key: 3e623de4-20a8-4a4c-acca-ed0b35d0be2c
+  signing-key: dc1df3d2-c6f8-4a46-8a20-1f9ed9e42f69
 local:
   path: uploads/file
 mysql:
