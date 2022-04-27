@@ -68,14 +68,8 @@
           <el-form-item>
             <el-button
               type="primary"
-              style="width: 46%"
               size="large"
-              @click="checkInit"
-            >前往初始化</el-button>
-            <el-button
-              type="primary"
-              size="large"
-              style="width: 46%; margin-left: 8%"
+              style="width: 46%;"
               @click="submitForm"
             >登 录</el-button>
           </el-form-item>
@@ -99,7 +93,6 @@ export default {
 
 <script setup>
 import { captcha } from '@/api/user'
-import { checkDB } from '@/api/initdb'
 import bootomInfo from '@/view/layout/bottomInfo/bottomInfo.vue'
 import { reactive, ref } from 'vue'
 import { ElMessage } from 'element-plus'
@@ -142,8 +135,8 @@ const changeLock = () => {
 const loginForm = ref(null)
 const picPath = ref('')
 const loginFormData = reactive({
-  username: 'admin',
-  password: '123456',
+  username: '',
+  password: '',
   captcha: '',
   captchaId: '',
 })
@@ -180,22 +173,6 @@ const submitForm = () => {
       return false
     }
   })
-}
-
-// 跳转初始化
-const checkInit = async() => {
-  const res = await checkDB()
-  if (res.code === 0) {
-    if (res.data?.needInit) {
-      userStore.NeedInit()
-      router.push({ name: 'Init' })
-    } else {
-      ElMessage({
-        type: 'info',
-        message: '已配置数据库信息，无法初始化',
-      })
-    }
-  }
 }
 
 </script>
