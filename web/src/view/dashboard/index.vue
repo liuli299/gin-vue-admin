@@ -3,7 +3,7 @@
     <div class="gva-card-box">
       <div class="gva-card gva-top-card">
         <div class="gva-top-card-left">
-          <div class="gva-top-card-left-title">早安，管理员，请开始一天的工作吧</div>
+          <div class="gva-top-card-left-title">早安，请开始一天的工作吧</div>
           <div class="gva-top-card-left-dot">今日晴，0℃ - 10℃，天气寒冷，注意添加衣物。</div>
           <div class="gva-top-card-left-rows">
             <el-row v-auth="888">
@@ -33,56 +33,9 @@
               </el-col>
             </el-row>
           </div>
-          <div>
-            <div class="gva-top-card-left-item">
-              使用教学：
-              <a
-                style="color:#409EFF"
-                target="view_window"
-                href="https://www.bilibili.com/video/BV1Rg411u7xH/"
-              >https://www.bilibili.com/video/BV1Rg411u7xH</a>
-            </div>
-            <div class="gva-top-card-left-item">
-              插件仓库：
-              <a
-                style="color:#409EFF"
-                target="view_window"
-                href="https://github.com/flipped-aurora/gva-plugins"
-              >https://github.com/flipped-aurora/gva-plugins</a>
-            </div>
-          </div>
         </div>
         <img src="@/assets/dashboard.png" class="gva-top-card-right" alt>
       </div>
-    </div>
-    <div class="gva-card-box">
-      <el-card class="gva-card quick-entrance">
-        <template #header>
-          <div class="card-header">
-            <span>快捷入口</span>
-          </div>
-        </template>
-        <el-row :gutter="20">
-          <el-col
-            v-for="(card, key) in toolCards"
-            :key="key"
-            :span="4"
-            :xs="8"
-            class="quick-entrance-items"
-            @click="toTarget(card.name)"
-          >
-            <div class="quick-entrance-item">
-              <div class="quick-entrance-item-icon" :style="{ backgroundColor: card.bg }">
-                <el-icon>
-                  <component :is="card.icon" :style="{ color: card.color }" />
-                </el-icon>
-              </div>
-              <p>{{ card.label }}</p>
-            </div>
-          </el-col>
-        </el-row>
-      </el-card>
-    <!-- <div class="quick-entrance-title"></div> -->
     </div>
     <div class="gva-card-box">
       <div class="gva-card">
@@ -90,14 +43,7 @@
           <span>数据统计</span>
         </div>
         <div class="echart-box">
-          <el-row :gutter="20">
-            <el-col :xs="24" :sm="18">
-              <echarts-line />
-            </el-col>
-            <el-col :xs="24" :sm="6">
-              <dashboard-table />
-            </el-col>
-          </el-row>
+          <echarts-line />
         </div>
       </div>
     </div>
