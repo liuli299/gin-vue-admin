@@ -49,25 +49,26 @@ func Routers() *gin.Engine {
 		systemRouter.InitBaseRouter(PublicGroup) // 注册基础功能路由 不做鉴权
 		systemRouter.InitInitRouter(PublicGroup) // 自动初始化相关
 	}
-	PrivateGroup := Router.Group("")
+	SystemGroup := Router.Group("")
 	// 系统接口既要鉴权又要策略
-	PrivateGroup.Use(middleware.JWTAuth()).Use(middleware.CasbinHandler())
+	SystemGroup.Use(middleware.JWTAuth()).Use(middleware.CasbinHandler())
 	{
-		systemRouter.InitApiRouter(PrivateGroup)                 // 注册功能api路由
-		systemRouter.InitJwtRouter(PrivateGroup)                 // jwt相关路由
-		systemRouter.InitUserRouter(PrivateGroup)                // 注册用户路由
-		systemRouter.InitMenuRouter(PrivateGroup)                // 注册menu路由
-		systemRouter.InitSystemRouter(PrivateGroup)              // system相关路由
-		systemRouter.InitCasbinRouter(PrivateGroup)              // 权限相关路由
-		systemRouter.InitAutoCodeRouter(PrivateGroup)            // 创建自动化代码
-		systemRouter.InitAuthorityRouter(PrivateGroup)           // 注册角色路由
-		systemRouter.InitSysDictionaryRouter(PrivateGroup)       // 字典管理
-		systemRouter.InitAutoCodeHistoryRouter(PrivateGroup)     // 自动化代码历史
-		systemRouter.InitSysOperationRecordRouter(PrivateGroup)  // 操作记录
-		systemRouter.InitSysDictionaryDetailRouter(PrivateGroup) // 字典详情管理
-		systemRouter.InitAuthorityBtnRouterRouter(PrivateGroup)  // 字典详情管理
+		systemRouter.InitApiRouter(SystemGroup)                 // 注册功能api路由
+		systemRouter.InitJwtRouter(SystemGroup)                 // jwt相关路由
+		systemRouter.InitUserRouter(SystemGroup)                // 注册用户路由
+		systemRouter.InitMenuRouter(SystemGroup)                // 注册menu路由
+		systemRouter.InitSystemRouter(SystemGroup)              // system相关路由
+		systemRouter.InitCasbinRouter(SystemGroup)              // 权限相关路由
+		systemRouter.InitAutoCodeRouter(SystemGroup)            // 创建自动化代码
+		systemRouter.InitAuthorityRouter(SystemGroup)           // 注册角色路由
+		systemRouter.InitSysDictionaryRouter(SystemGroup)       // 字典管理
+		systemRouter.InitAutoCodeHistoryRouter(SystemGroup)     // 自动化代码历史
+		systemRouter.InitSysOperationRecordRouter(SystemGroup)  // 操作记录
+		systemRouter.InitSysDictionaryDetailRouter(SystemGroup) // 字典详情管理
+		systemRouter.InitAuthorityBtnRouterRouter(SystemGroup)  // 字典详情管理
 	}
 
+	PrivateGroup := Router.Group("")
 	// 一般接口只需要鉴权
 	PrivateGroup.Use(middleware.JWTAuth())
 	{
