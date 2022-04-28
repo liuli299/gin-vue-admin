@@ -69,13 +69,12 @@
             <el-button
               type="primary"
               size="large"
-              style="width: 46%;"
+              style="width: 100%;"
               @click="submitForm"
             >登 录</el-button>
           </el-form-item>
         </el-form>
       </div>
-      <div class="login_panle_right" />
       <div class="login_panle_foot">
         <div class="copyright">
           <bootomInfo />
