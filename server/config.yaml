@@ -149,10 +149,10 @@ timer:
     interval: 168h
 zap:
   level: info
-  format: console
-  prefix: '[admin/server]'
+  format: json
+  prefix: ''
   director: log
   show-line: true
-  encode-level: LowercaseColorLevelEncoder
+  encode-level: LowercaseLevelEncoder
   stacktrace-key: stacktrace
-  log-in-console: true
+  log-in-console: false
