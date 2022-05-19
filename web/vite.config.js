@@ -28,9 +28,9 @@ export default ({
 
   const rollupOptions = {
     output: {
-      entryFileNames: `gva/gin-vue-admin-[name].${timestamp}.js`,
-      chunkFileNames: `js/gin-vue-admin-[name].${timestamp}.js`,
-      assetFileNames: `assets/gin-vue-admin-[name].${timestamp}.[ext]`
+      entryFileNames: `js/entry-[name].${timestamp}.js`,
+      chunkFileNames: `js/chunk-[name].${timestamp}.js`,
+      assetFileNames: `assets/admin-[name].${timestamp}.[ext]`
     }
   }
 
