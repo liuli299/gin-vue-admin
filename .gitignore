@@ -21,6 +21,7 @@ yarn-error.log*
 *.njsproj
 *.sln
 *.sw?
+*.log
 
 /server/log/
 /server/gva
@@ -28,3 +29,4 @@ yarn-error.log*
 /server/vendor
 
 *.iml
+list.txt
